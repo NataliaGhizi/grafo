@@ -50,16 +50,16 @@ class Grafo:
             if identificador == i.getId():
                 return i
         
-    def nova_Aresta(self, origem, destino, peso):
+    def nova_Aresta(self, origem, destino):
         origem_aux = self.busca_Vertice(origem)
         destino_aux = self.busca_Vertice(destino)
         if (origem_aux is not None) and (destino_aux is not None):
-            self.lista_Arestas.append(Aresta(origem_aux, destino_aux, peso))
+            self.lista_Arestas.append(Aresta(origem_aux, destino_aux))
         else:
             print("Um do Vertice ou ambos são invalidos")
 
         if self.direcionado == False:
-            self.lista_Arestas.append(Aresta(destino_aux, origem_aux, peso))
+            self.lista_Arestas.append(Aresta(destino_aux, origem_aux))
 
     def busca_Vizinhos(self, u):
         retorno = []

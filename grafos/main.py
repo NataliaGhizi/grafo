@@ -41,7 +41,7 @@ def menu_grafo():
                     print(g.retorna_vertices())
 
             origem, destino = op_a.split(' ')
-            g.nova_Aresta(int(origem), int(destino), 1)
+            g.nova_Aresta(int(origem), int(destino))
 
         elif op == '2':
             op_v = 'h'

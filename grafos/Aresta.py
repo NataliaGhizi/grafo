@@ -1,21 +1,14 @@
 class Aresta():
-	def __init__(self,origem,destino,peso = 0):
+	def __init__(self,origem,destino):
 		self.origem = origem
 		self.destino = destino
-		self.peso = peso
 				
 	def getOrigem(self):
 		return self.origem
 		
 	def getDestino(self):
 		return self.destino
-	
-	def setpeso(self,peso):
-		self.peso = peso
-		
-	def	getPeso(self):
-		return self.peso
-		
+			
 	def setOrigem(self,vertice):
 		self.origem = vertice
 		
