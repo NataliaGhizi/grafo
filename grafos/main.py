@@ -2,15 +2,16 @@ from Grafo import Grafo
 from utils.utils import *
 
 def menu_geral():
-    print('### MENU ###')
-    print('1. Iniciar novo grafo')
-    print('0. Sair')
+    while True:
+        print('### MENU ###')
+        print('1. Iniciar novo grafo')
+        print('0. Sair')
 
-    op = read_str("Opcao: ")
-    if op == '1':
-        menu_grafo()
-    elif op == '0':
-        return
+        op = read_str("Opcao: ")
+        if op == '1':
+            menu_grafo()
+        elif op == '0':
+            break
 
 def menu_grafo():
     print('\n### MENU GRAFO ###')
@@ -78,9 +79,7 @@ def menu_grafo():
         elif op == '0':
             return
 
-
-while True:
-    menu_geral()
+menu_geral()
 
 print('boa noite')
 
