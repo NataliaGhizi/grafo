@@ -34,9 +34,9 @@ class Grafo:
                 if total == bar:
                     linha = linha + ' \ |'
                 elif total in batidas:
-                    linha = linha + ' x |'
+                    linha = linha + ' 1 |'
                 else:
-                    linha = linha + '   |'
+                    linha = linha + ' 0 |'
             bar += 1
             retorno.append(linha)
         return '\n'.join(retorno)
