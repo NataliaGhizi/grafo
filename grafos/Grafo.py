@@ -6,7 +6,6 @@ class Grafo:
         self.lista_Vertices = []
         self.lista_Arestas = []
         self.direcionado = direcionado
-        self.tempo = 0
 
     def retorna_vertices(self):
         return [v.getId() for v in self.lista_Vertices]
@@ -14,7 +13,7 @@ class Grafo:
     def retorna_arestas(self):
         return ['id: {} - {}'.format(str(i), str(v)) for i, v in enumerate(self.lista_Arestas)]
 
-    def remove_Aresta(self, a):
+    def remove_aresta(self, a):
         del self.lista_Arestas[a]
 
     def desenha(self):
@@ -28,7 +27,7 @@ class Grafo:
 
         retorno.append(header)
         for vertice in self.lista_Vertices:
-            batidas = [a.id for a in self.busca_Vizinhos(self.busca_Vertice(vertice.getId()))]
+            batidas = [a.id for a in self.busca_adjacente(self.busca_vertice(vertice.getId()))]
 
             linha = str(vertice) + ' |'
             for total in range(tamanho):
@@ -45,14 +44,14 @@ class Grafo:
     def novo_Vertice(self, identificador):
         self.lista_Vertices.append(Vertice(identificador))
 
-    def busca_Vertice(self, identificador):
+    def busca_vertice(self, identificador):
         for i in self.lista_Vertices:
             if identificador == i.getId():
                 return i
         
-    def nova_Aresta(self, origem, destino):
-        origem_aux = self.busca_Vertice(origem)
-        destino_aux = self.busca_Vertice(destino)
+    def nova_aresta(self, origem, destino):
+        origem_aux = self.busca_vertice(origem)
+        destino_aux = self.busca_vertice(destino)
         if (origem_aux is not None) and (destino_aux is not None):
             self.lista_Arestas.append(Aresta(origem_aux, destino_aux))
         else:
@@ -61,7 +60,7 @@ class Grafo:
         if self.direcionado == False:
             self.lista_Arestas.append(Aresta(destino_aux, origem_aux))
 
-    def busca_Vizinhos(self, u):
+    def busca_vizinhos(self, u):
         retorno = []
         for i in range(len(self.lista_Arestas)):
             origem = self.lista_Arestas[i].getOrigem()
@@ -74,7 +73,7 @@ class Grafo:
         
         return retorno
     
-    def busca_Adjacente(self, u):
+    def busca_adjacente(self, u):
         retorno = []
         for i in range(len(self.lista_Arestas)):
             origem = self.lista_Arestas[i].getOrigem()

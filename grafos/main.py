@@ -41,7 +41,7 @@ def menu_grafo():
                     print(g.retorna_vertices())
 
             origem, destino = op_a.split(' ')
-            g.nova_Aresta(int(origem), int(destino))
+            g.nova_aresta(int(origem), int(destino))
 
         elif op == '2':
             op_v = 'h'
@@ -51,7 +51,7 @@ def menu_grafo():
                 if op_v == 'h':
                     print(g.retorna_arestas())
             
-            g.remove_Aresta(int(op_v))
+            g.remove_aresta(int(op_v))
         
         elif op == '3':
             op_l = 'h'
@@ -61,14 +61,14 @@ def menu_grafo():
                 if op_l == 'h':
                     print(g.retorna_vertices())
             
-            dados = g.busca_Vizinhos(g.busca_Vertice(int(op_l)))
+            dados = g.busca_vizinhos(g.busca_vertice(int(op_l)))
             print('Vizinhos de {}: '.format(op_l))
             for dado in dados:
                 print(' \t - {}'.format(dado.id))
         
         elif op == '4':
             op_l = read_str("Informar o id do vertice, digite h para ajuda: ")
-            dados = g.busca_Adjacente(g.busca_Vertice(int(op_l)))
+            dados = g.busca_adjacente(g.busca_vertice(int(op_l)))
             print('Adjacente de {}: '.format(op_l))
             for dado in dados:
                 print(' \t - {}'.format(dado.id))
