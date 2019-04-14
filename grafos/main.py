@@ -32,6 +32,7 @@ def menu_grafo():
         print('0. Volvar')
 
         op = read_str("Opcao: ")
+        print(50 * '\n')
         if op == '1':
             op_a = 'h'
             while op_a == 'h':
@@ -41,17 +42,23 @@ def menu_grafo():
                     print(g.retorna_vertices())
 
             origem, destino = op_a.split(' ')
-            g.nova_aresta(int(origem), int(destino))
+            if not g.existe_aresta(origem, destino):
+                g.nova_aresta(int(origem), int(destino))
+            else:
+                print('aresta ja existe')
 
         elif op == '2':
-            op_v = 'h'
-            while op_v == 'h':
-                op_v = read_str("Informar o id da aresta, digite h para ajuda: ")
+            if g.retorna_qtd_aresta() > 0:
+                op_v = 'h'
+                while op_v == 'h':
+                    op_v = read_str("Informar o id da aresta, digite h para ajuda: ")
 
-                if op_v == 'h':
-                    print(g.retorna_arestas())
-            
-            g.remove_aresta(int(op_v))
+                    if op_v == 'h':
+                        print(g.retorna_arestas())
+                
+                g.remove_aresta(int(op_v))
+            else:
+                print('nenhuma aresta cadastrada')
         
         elif op == '3':
             op_l = 'h'

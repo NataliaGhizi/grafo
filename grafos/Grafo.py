@@ -15,6 +15,16 @@ class Grafo:
 
     def remove_aresta(self, a):
         del self.lista_Arestas[a]
+    
+    def retorna_qtd_aresta(self):
+        return len(self.lista_Arestas)
+
+    def existe_aresta(self, origem, destino):
+        for a in self.lista_Arestas:
+            if(str(a.getOrigem()) == origem and str(a.getDestino()) == destino):
+                return True
+
+        return False
 
     def desenha(self):
         retorno = []
