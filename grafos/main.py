@@ -1,5 +1,6 @@
 from Grafo import Grafo
 from utils.utils import *
+import json
 
 def menu_geral():
     while True:
@@ -29,6 +30,7 @@ def menu_grafo():
         print('3. Lista vizinhos')
         print('4. Lista adjacente')
         print('5. Desenha matriz')
+        print('6. Cores - Welsh Powell')
         print('0. Volvar')
 
         op = read_str("Opcao: ")
@@ -36,16 +38,16 @@ def menu_grafo():
         if op == '1':
             op_a = 'h'
             while op_a == 'h':
-                op_a = read_str("Informar o id dos vertices, origem e destino (ex.: 0 1), digite h para ajuda: ")
+                op_a = read_str("Informar o id dos vertices, origem, destino e peso (ex.: 0 1 5), digite h para ajuda: ")
 
                 if op_a == 'h':
                     print(g.retorna_vertices())
 
-            origem, destino = op_a.split(' ')
+            origem, destino, peso = op_a.split(' ')
             if not g.existe_aresta(origem, destino):
-                g.nova_aresta(int(origem), int(destino))
+               g.nova_aresta(int(origem), int(destino), int(peso))
             else:
-                print('aresta ja existe')
+               print('aresta ja existe')
 
         elif op == '2':
             if g.retorna_qtd_aresta() > 0:
@@ -82,6 +84,11 @@ def menu_grafo():
         
         elif op == '5':
             print(g.desenha())
+
+        elif op == '6':
+            g.atualizaQtdVizinho()
+            print(json.dumps(g.colorido(), indent=4, sort_keys=True))
+            print('* index do json = vertice, valor do json = cor')
             
         elif op == '0':
             return
