@@ -14,6 +14,12 @@ class Vertice():
 
     def getId(self):
         return self.id
+    
+    def setVizinhos(self, vizinhos):
+        self.vizinhos = vizinhos
+    
+    def getVizinhos(self):
+        return self.vizinhos
 
     def __str__(self):
         return str(self.id)
