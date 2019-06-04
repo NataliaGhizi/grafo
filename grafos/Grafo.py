@@ -26,6 +26,33 @@ class Grafo:
 
         return False
 
+    def atualizaQtdVizinho(self):
+        for vertice in self.lista_Vertices:
+            vizinhos = [a.id for a in self.busca_vizinhos(self.busca_vertice(vertice.getId()))]
+            vertice.setVizinhos(len(vizinhos))
+
+    def colorido(self):
+        node_list = sorted(self.lista_Vertices, key=lambda x:x.getVizinhos(), reverse=True)
+        col_val = {}
+
+        for node in node_list:
+            print(node.id)
+
+            available = [True] * len(node_list) 
+
+            for adj_node in self.busca_vizinhos(self.busca_vertice(node.id)):
+                if adj_node.id in col_val.keys():
+                    col = col_val[adj_node.id]
+                    available[col] = False
+            clr = 0
+            for clr in range(len(available)):
+                if available[clr] == True:
+                    break
+            col_val[node.id] = clr
+
+        return col_val
+        
+
     def desenha(self):
         retorno = []
         bar = 0
@@ -59,11 +86,11 @@ class Grafo:
             if identificador == i.getId():
                 return i
         
-    def nova_aresta(self, origem, destino):
+    def nova_aresta(self, origem, destino, peso):
         origem_aux = self.busca_vertice(origem)
         destino_aux = self.busca_vertice(destino)
         if (origem_aux is not None) and (destino_aux is not None):
-            self.lista_Arestas.append(Aresta(origem_aux, destino_aux))
+            self.lista_Arestas.append(Aresta(origem_aux, destino_aux, peso))
         else:
             print("Um do Vertice ou ambos são invalidos")
 
