@@ -36,7 +36,7 @@ class Grafo:
         col_val = {}
 
         for node in node_list:
-            print(node.id)
+            #print(node.id)
 
             available = [True] * len(node_list) 
 
@@ -51,6 +51,27 @@ class Grafo:
             col_val[node.id] = clr
 
         return col_val
+    
+    def prim(self, nodo):
+        # TODO
+        # final = set()
+        # inicio = True
+
+        # while len(final) != len(self.lista_Vertices):
+        #     if inicio:
+        #         busca = nodo
+        #         inicio = False
+
+        #     franja = [str(v.id) for v in self.busca_vizinhos(self.busca_vertice(nodo))]
+        #     lista_para_pegar_menor_peso = []
+        #     for a in self.lista_Arestas:
+        #         if str(a.getOrigem()) == str(busca) and str(a.getDestino()) in franja:
+        #             lista_para_pegar_menor_peso.append(a)
+        #     borda = sorted(lista_para_pegar_menor_peso, key=lambda e:e.getPeso())[0]
+        #     busca = borda.getDestino()
+            
+        #     final.add(busca)
+
         
 
     def desenha(self):

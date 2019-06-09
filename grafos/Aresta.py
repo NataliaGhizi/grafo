@@ -23,4 +23,4 @@ class Aresta():
 		self.peso = peso
 	
 	def __str__(self):
-		return '{}-->{}-p:{}'.format(self.origem.getId(), self.destino.getId(), self.peso.getId())
+		return '{}-->{}-p:{}'.format(str(self.origem), str(self.destino), str(self.peso))
