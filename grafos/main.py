@@ -17,7 +17,8 @@ def menu_geral():
 def menu_grafo():
     print('\n### MENU GRAFO ###')
 
-    tam_grafo = read_int("Defina a qtd. de vertices: ")
+    #tam_grafo = read_int("Defina a qtd. de vertices: ")
+    tam_grafo = 7
 
     g = Grafo()
     for i in range(tam_grafo):
@@ -31,23 +32,35 @@ def menu_grafo():
         print('4. Lista adjacente')
         print('5. Desenha matriz')
         print('6. Cores - Welsh Powell')
-        print('0. Volvar')
+        print('7. Prim')
+        print('0. Voltar')
 
         op = read_str("Opcao: ")
         print(50 * '\n')
         if op == '1':
-            op_a = 'h'
-            while op_a == 'h':
-                op_a = read_str("Informar o id dos vertices, origem, destino e peso (ex.: 0 1 5), digite h para ajuda: ")
+            # op_a = 'h'
+            # while op_a == 'h':
+            #     op_a = read_str("Informar o id dos vertices, origem, destino e peso (ex.: 0 1 5), digite h para ajuda: ")
 
-                if op_a == 'h':
-                    print(g.retorna_vertices())
+            #     if op_a == 'h':
+            #         print(g.retorna_vertices())
 
-            origem, destino, peso = op_a.split(' ')
-            if not g.existe_aresta(origem, destino):
-               g.nova_aresta(int(origem), int(destino), int(peso))
-            else:
-               print('aresta ja existe')
+            # origem, destino, peso = op_a.split(' ')
+            # if not g.existe_aresta(origem, destino):
+            #    g.nova_aresta(int(origem), int(destino), int(peso))
+            # else:
+            #    print('aresta ja existe')
+            g.nova_aresta(1,2,1)
+            g.nova_aresta(1,3,3)
+            g.nova_aresta(2,3,1)
+            g.nova_aresta(2,4,2)
+            g.nova_aresta(2,5,3)
+            g.nova_aresta(3,5,2)
+            g.nova_aresta(4,5,-3)
+
+            g.nova_aresta(4,6,3)
+            g.nova_aresta(5,6,2)
+            
 
         elif op == '2':
             if g.retorna_qtd_aresta() > 0:
@@ -88,7 +101,20 @@ def menu_grafo():
         elif op == '6':
             g.atualizaQtdVizinho()
             print(json.dumps(g.colorido(), indent=4, sort_keys=True))
-            print('* index do json = vertice, valor do json = cor')
+            print('* index do json = vertice e o valor do json = cor')
+
+        elif op == '7':
+            if g.retorna_qtd_aresta() > 0:
+                op_v = 'h'
+                while op_v == 'h':
+                    op_v = read_str("Informar o id da aresta, digite h para ajuda: ")
+
+                    if op_v == 'h':
+                        print(g.retorna_arestas())
+                
+                g.prim(int(op_v))
+            else:
+                print('nenhuma aresta cadastrada')
             
         elif op == '0':
             return
